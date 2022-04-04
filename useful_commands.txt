@@ -1,0 +1,33 @@
+ 7606  git clone https://github.com/michalziolecki/django_intro.git
+ 7607  ls -la
+ 7608  cd django_intro
+ 7609  pyenv local 3.9.9
+ 7610  pyenv virtualenv django_intro
+ 7611  pyenv local django_intro
+7617  git status
+ 7618  touch .gitignore
+ 7619  vim .gitignore
+ 7620  git status
+ 7651* pip install django
+ 7652  pip freeze
+ 7653  git status
+7658  pip freeze | grep Django
+ 7659  django-admin startproject library .
+7662  history | tail -10
+ 7663  vim useful_commands.txt
+ 7664  python --version
+ 7665  pyenv versions
+7664  python --version
+ 7665  pyenv versions
+ 7666  history | tail -10
+ 7667  vim useful_commands.txt
+ 7668  git status
+ 7669  ls -la library
+ 7670  git add .
+ 7671  git commit -m "django init"
+ 7672  git show
+7678  git add useful_commands.txt
+ 7679  git commit --amend --no-edit
+ 7691  git remote set-url origin git@github.com:michalziolecki/django_intro.git
+ 7692  git remote -v
+
