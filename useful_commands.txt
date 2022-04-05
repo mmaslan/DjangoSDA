@@ -34,4 +34,5 @@
 7875  python manage.py makemigrations
  7876  python manage.py migrate
 7880  python manage.py createsuperuser
+ python manage.py startapp books
 
