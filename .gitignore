@@ -1,4 +1,4 @@
 .python-version
 .idea/
 db.sqlite3
-library/__pycache__/
+__pycache__/
