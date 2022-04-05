@@ -30,4 +30,8 @@
  7679  git commit --amend --no-edit
  7691  git remote set-url origin git@github.com:michalziolecki/django_intro.git
  7692  git remote -v
+ python3 manage.py runserver
+7875  python manage.py makemigrations
+ 7876  python manage.py migrate
+7880  python manage.py createsuperuser
 
