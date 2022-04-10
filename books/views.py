@@ -1,3 +1,4 @@
+from uuid import uuid4
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -6,7 +7,8 @@ from django.shortcuts import render
 # 11.
 
 def get_hello(request: WSGIRequest) -> HttpResponse:
-    return HttpResponse("hello world")
+    hello = "Hello world!"
+    return render(request, template_name="Hello_world.html", context={"hello_var": hello})
 
 # 12.
 
