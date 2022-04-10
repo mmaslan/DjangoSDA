@@ -39,16 +39,17 @@ def get_argument_from_query(request: WSGIRequest, x: int, y: str, z: str) -> Htt
 
 @csrf_exempt
 def check_http_query_type(request: WSGIRequest) -> HttpResponse:
-    query_type = "Unknown"
-    if request.method == "GET":
-        query_type = "To jest GET"
-    elif request.method == "PAST":
-        query_type = "To jest PAST"
-    elif request.method == "PUT":
-        query_type = "To jest PUT"
-    elif request.method == "DELETE":
-        query_type = "To jest DELETE"
-    return HttpResponse(query_type)
+    #query_type = "Unknown"
+    #if request.method == "GET":
+    #    query_type = "To jest GET"
+    # elif request.method == "PAST":
+    #     query_type = "To jest PAST"
+    # elif request.method == "PUT":
+    #     query_type = "To jest PUT"
+    # elif request.method == "DELETE":
+    #     query_type = "To jest DELETE"
+    # return HttpResponse(query_type)
+    return render(request, template_name="method.html", context={})
 
 # 21.
 
