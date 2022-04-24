@@ -1,8 +1,22 @@
 from uuid import uuid4
+
+from django.core.exceptions import BadRequest
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse, JsonResponse
+from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
+
+from books.models import BookAuthor
+
+
+class AuthorListBaseView(View):
+    template_name = "author_list.html"
+    queryset = BookAuthor.objects.all()  # type: ignore
+
+    def get(self, request: WSGIRequest, *args, **kwargs):
+        context = {"authors": self.queryset}
+        return render(request, template_name=self.template_name, context=context)
 
 # 11.
 
@@ -65,4 +79,6 @@ def raise_error_for_fun(request: WSGIRequest) -> HttpResponse:
     if request.method != "GET":
         raise BadRequest("method not allowes")
     return HttpResponse("Wszystko GIT")
+
+
 
