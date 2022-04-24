@@ -6,7 +6,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 
 from books.models import BookAuthor, Category, Book
 
@@ -29,6 +29,14 @@ class BooksListView(ListView):
     template_name = "books_list.html"
     model = Book
     paginate_by = 10
+
+
+class BookDetailsView(DetailView):
+    template_name = "book_detail.html"
+    model = Book
+
+    def get_object(self, **kwargs):
+        return get_object_or_404(Book, id=self.kwargs.get("pk"))
 
 
 # 11.
