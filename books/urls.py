@@ -15,5 +15,5 @@ urlpatterns = [
     path('author-list', AuthorListBaseView.as_view(), name='author-list'),
     path('category-list', CategoryListTameplateView.as_view(), name='category-list'),
     path('books-list', BooksListView.as_view(), name='books-list'),
-    path('books_details/<int:pk>/', BookDetailsView.as_view(), name='books_details')
+    path('book-details/<int:pk>/', BookDetailsView.as_view(), name="books_details"),
 ]
