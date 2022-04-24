@@ -7,7 +7,7 @@ urlpatterns = [
     path('uuids-b', get_uuids_b),
     path('path-args/<int:x>/<str:y>/<slug:z>/', get_argument_from_path, name="get_from_path"),
     path('query-args', get_argument_from_query, name="get_from_query"),
-    path('query-type', check_http_query_type, name="check_query_type"),
+    path('query-types', check_http_query_type, name="check_query_type"),
     path('get-headers', get_headers, name="get_headers"),
     path('raise-error', raise_error_for_fun, name='raise-error'),
-]q
+]
