@@ -22,5 +22,4 @@ urlpatterns = [
     path('author-update/<int:pk>/', AuthorUpdateView.as_view(), name="author_update"),
     path('book-create/', BookCreateView.as_view(), name="book_create"),
     path('book-update/<int:pk>/', BookUpdateView.as_view(), name="book_update"),
-
 ]
