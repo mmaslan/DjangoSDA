@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView, ListView, DetailView, FormView, CreateView, UpdateView
+from django.views.generic import TemplateView, ListView, DetailView, FormView, CreateView, UpdateView, DeleteView
 
 from books.forms import CategoryForm, AuthorForm, BookForm
 from books.models import BookAuthor, Category, Book
@@ -102,7 +102,18 @@ class BookUpdateView(UpdateView):
         return get_object_or_404(Book, id=self.kwargs.get("pk"))
 
 
+# 15. / 2
 
+class BookDeleteView(DeleteView):
+    template_name = "book_delete.html"
+    model = Book
+    # success_url = reverse_lazy("book_list")
+
+    def get_success_url(self):
+        return reverse_lazy("books-list")
+
+    def get_object(self, **kwargs):
+        return get_object_or_404(Book, id=self.kwargs.get("pk"))
 
 
 # 11.
