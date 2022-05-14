@@ -6,10 +6,10 @@ from django.http import HttpResponse, JsonResponse
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render
-from django.views.generic import TemplateView, ListView, DetailView, FormView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import TemplateView, ListView, DetailView, FormView, CreateView, UpdateView
 
-from books.forms import CategoryForm
+from books.forms import CategoryForm, AuthorForm, BookForm
 from books.models import BookAuthor, Category, Book
 import logging
 logger = logging.getLogger(__name__)
@@ -63,6 +63,46 @@ class CategoryCreateFormView(FormView):
         check_entity = Category.objects.create(**form.cleaned_data)
         logger.info(f"check_entity-id={check_entity.id}")
         return result
+
+class AuthorCreateView(CreateView):
+    template_name = "author_form.html"
+    form_class = AuthorForm
+    success_url = reverse_lazy("author-list")
+
+
+class AuthorUpdateView(UpdateView):
+    template_name = "author_form.html"
+    form_class = AuthorForm
+    success_url = reverse_lazy("author-list")
+
+    def get_object(self, **kwargs):
+        return get_object_or_404(BookAuthor, id=self.kwargs.get("pk"))
+
+# 13. / 2
+
+class BookCreateView(CreateView):
+    template_name = "author_form.html"
+    form_class = BookForm
+    # success_url = reverse_lazy("book_list")
+
+    def get_success_url(self):
+        return reverse_lazy("books-list")
+
+# 14. / 2
+
+class BookUpdateView(UpdateView):
+    template_name = "book_form.html"
+    form_class = BookForm
+    # success_url = reverse_lazy("book_list")
+
+    def get_success_url(self):
+        return reverse_lazy("books-list")
+
+    def get_object(self, **kwargs):
+        return get_object_or_404(Book, id=self.kwargs.get("pk"))
+
+
+
 
 
 # 11.
