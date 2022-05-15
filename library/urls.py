@@ -6,8 +6,9 @@ from books.views import get_hello
 
 
 urlpatterns = [
-    path('', get_hello),
+    path('', get_hello, name="home"),
     path('books/', include('books.urls')),
+    path('users/', include('users.urls')),
     # path('uuids-a', get_uuids_a),
     # path('uuids-b', get_uuids_b),
     # path('query-args/<int:x>/<str:y>/<slug:z>/', get_argument_from_path, name="get_from_path"),
@@ -17,5 +18,5 @@ urlpatterns = [
     # path('raise-error', raise_error_for_fun, name="raise-error"),
 ]
 
-# if settings.DEBUG:
-#     urlpatterns.append(path('admin/', admin.site.urls))
+if settings.DEBUG:
+    urlpatterns.append(path('admin/', admin.site.urls))
