@@ -1,6 +1,7 @@
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 
 from users.forms import SignUpForm
 
@@ -13,3 +14,8 @@ class SignUpView(CreateView):
 
 class UserLoginView(LoginView):
     template_name = 'login.html'
+
+
+class UserListView(ListView):
+    template_name = "user_list.html"
+    model = User
