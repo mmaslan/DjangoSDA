@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for user in lista_marka %}
+    <li>{{ user.username }}</li>
+    {% endfor %}
+{% endblock %}
